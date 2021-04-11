@@ -1,5 +1,4 @@
 <?php
-require_once(CONTROLLERS_DIR . 'BaseController.php');
 
 class Users extends CI_Controller
 {
@@ -35,8 +34,6 @@ class Users extends CI_Controller
             }else{
                 $response = $this->user->getAll();
             }
-
-            
 
             echo json_encode($response);
 
