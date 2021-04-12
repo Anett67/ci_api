@@ -5,6 +5,7 @@
         <label class="form-label" for="user-email">Rechercher par addresse mail</label>
         <input class="form-control" id="user-email" type="email" name="user_email">
     </div>
+    <div id="message text-danger"></div>
     <button class="btn btn-primary" type="submit">Rechercher</button>
 </form>
 
@@ -16,3 +17,4 @@
     </thead>
     <tbody id="users"></tbody>
 </table>
+

@@ -1,5 +1,7 @@
 <?php
 
+defined('BASEPATH') or exit('No direct script access allowed');
+
 class Users extends CI_Controller
 {
     public function __construct()
@@ -8,7 +10,7 @@ class Users extends CI_Controller
         
         header('Access-Control-Allow-Origin: *');
         header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
-        header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+        header("Access-Control-Allow-Methods: GET, POST");
 
         $this->load->database();
         
@@ -24,18 +26,20 @@ class Users extends CI_Controller
 
     }
 
-    public function show($email='')
+    public function show()
     {
 
         if($_SERVER["REQUEST_METHOD"] === "GET"){
 
-            if(!empty($email)){
+            $email=$this->input->get('email');
+
+            if($email){
                 $response = $this->user->getByEmail($email);
             }else{
                 $response = $this->user->getAll();
             }
 
-            echo json_encode($response);
+            echo  json_encode($response);
 
         }
     }
