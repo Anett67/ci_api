@@ -33,10 +33,16 @@ class Users extends CI_Controller
 
             $email=$this->input->get('email');
 
+            $response['error'] = false;
+
             if($email){
-                $response = $this->user->getByEmail($email);
+                if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+                    $response['users'] = $this->user->getByEmail($email);
+                }else{
+                    $response['error'] = true;
+                }
             }else{
-                $response = $this->user->getAll();
+                $response['users'] = $this->user->getAll();
             }
 
             echo  json_encode($response);
