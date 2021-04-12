@@ -1,6 +1,7 @@
 $(function () {
+  const siteURL = $("#site-url").val()
   const getUsers = (email = "") => {
-    let url = `http://localhost:8080/users/show?email=${email}`
+    let url = `${siteURL}users/show?email=${email}`
     $.get(url, data => {
       const response = $.parseJSON(data)
       if (!response.error) {
